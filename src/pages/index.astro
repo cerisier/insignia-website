@@ -26,6 +26,7 @@ const releases = [
   <body>
     <main class="site-shell">
       <header class="masthead" aria-label="Insignia">
+        <img class="hero-icon" src="/insignia-icon.png" alt="Insignia icon" />
         <a class="brand" href="/" aria-label="Insignia home">
           <svg class="brand-mark" viewBox="0 0 180 160" role="img" aria-label="Insignia mark">
             <path class="brand-loop loop-a" d="M87 77C67 36 30 26 18 43 3 65 34 95 89 80" />
@@ -148,6 +149,14 @@ const releases = [
     min-height: 100vh;
     margin: 0 auto;
     padding: clamp(2rem, 5vw, 4rem) 0 2.75rem;
+  }
+
+  .hero-icon {
+    display: block;
+    width: clamp(8rem, 30vw, 18rem);
+    height: auto;
+    filter: brightness(0) invert(1);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
   }
 
   .masthead {
