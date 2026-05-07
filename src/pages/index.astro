@@ -1,12 +1,12 @@
 ---
 const releases = [
-  { id: "INS001", title: "Faster", artist: "DJ Cøsmic Dream", cover: "/releases/INS001.jpg" },
-  { id: "INS002", title: "Dolphin Dreams", artist: "DJ Cøsmic Dream", cover: "/releases/INS002.jpg" },
-  { id: "INS003", title: "Love.exe", artist: "DJ Cøsmic Dream", cover: "/releases/INS003.jpg" },
-  { id: "INS004", title: "Friday", artist: "DJ Cøsmic Dream", cover: "/releases/INS004.jpg" },
-  { id: "INS005", title: "Turtle Beach", artist: "DJ Cøsmic Dream", cover: "/releases/INS005.jpg" },
-  { id: "INS006", title: "Drifting", artist: "DJ Cøsmic Dream", cover: "/releases/INS006.jpg" },
   { id: "INS007", title: "Luna EP", artist: "Glenn Morrison & Night Waves", cover: "/releases/INS007.jpg" },
+  { id: "INS006", title: "Drifting", artist: "DJ Cøsmic Dream", cover: "/releases/INS006.jpg" },
+  { id: "INS005", title: "Turtle Beach", artist: "DJ Cøsmic Dream", cover: "/releases/INS005.jpg" },
+  { id: "INS004", title: "Friday", artist: "DJ Cøsmic Dream", cover: "/releases/INS004.jpg" },
+  { id: "INS003", title: "Love.exe", artist: "DJ Cøsmic Dream", cover: "/releases/INS003.jpg" },
+  { id: "INS002", title: "Dolphin Dreams", artist: "DJ Cøsmic Dream", cover: "/releases/INS002.jpg" },
+  { id: "INS001", title: "Faster", artist: "DJ Cøsmic Dream", cover: "/releases/INS001.jpg" },
 ];
 ---
 
@@ -229,6 +229,11 @@ const releases = [
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 400ms ease;
+  }
+
+  .release-card:hover .release-cover {
+    transform: scale(1.06);
   }
 
   .release-loop {
