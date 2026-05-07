@@ -229,8 +229,7 @@ const releases = [
   .release-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+    gap: 0.5rem;
   }
 
   .release-card {
@@ -238,8 +237,6 @@ const releases = [
     aspect-ratio: 1;
     min-width: 0;
     background: #111;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
 
