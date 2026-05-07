@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local editor settings
+.vscode/
+
+# unused starter asset
+public/favicon.ico
