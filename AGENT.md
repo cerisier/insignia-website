@@ -30,5 +30,6 @@ npm run build
 ## Main Files
 
 - Page and styles: `src/pages/index.astro`
+- Release artwork: `public/releases/`
 - Netlify config: `netlify.toml`
 - Basic operator docs: `README.md`

@@ -33,4 +33,12 @@ Main page:
 src/pages/index.astro
 ```
 
-The release list is near the top of that file. Edit the title, artist, catalog ID, and color there.
+The release list is near the top of that file. Edit the title, artist, catalog ID, and artwork path there.
+
+Release artwork:
+
+```text
+public/releases/
+```
+
+Each release has an `artwork` field near the top of `src/pages/index.astro`.
