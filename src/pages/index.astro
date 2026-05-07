@@ -1,12 +1,12 @@
 ---
 const releases = [
-  { id: "ISG001", title: "Signal Bloom", artist: "Anjuna Static", color: "#47d414", foil: "mint", ink: "#eef0f5" },
-  { id: "ISG002", title: "Cosmic Dream", artist: "Dolphin Dreams", color: "#13d5d8", foil: "rose", ink: "#dce3ff", featured: true },
-  { id: "ISG003", title: "Lime Transmission", artist: "Oort Drift", color: "#f0f500", foil: "silver", ink: "#d8dce8" },
-  { id: "ISG004", title: "Night Loop", artist: "Pink Current", color: "#d71586", foil: "violet", ink: "#e5e8ff" },
-  { id: "ISG005", title: "Solar Motor", artist: "Axis Club", color: "#f59a05", foil: "pearl", ink: "#dbe4ff" },
-  { id: "ISG006", title: "Soft Circuit", artist: "Cyan Relay", color: "#10dfae", foil: "blush", ink: "#d8e4ff" },
-  { id: "ISG007", title: "White Index", artist: "Blue Method", color: "#f4f4f0", foil: "blue", ink: "#0421aa" },
+  { id: "INS001", title: "Faster", artist: "DJ Cøsmic Dream", cover: "/releases/INS001.jpg" },
+  { id: "INS002", title: "Dolphin Dreams", artist: "DJ Cøsmic Dream", cover: "/releases/INS002.jpg" },
+  { id: "INS003", title: "Love.exe", artist: "DJ Cøsmic Dream", cover: "/releases/INS003.jpg" },
+  { id: "INS004", title: "Friday", artist: "DJ Cøsmic Dream", cover: "/releases/INS004.jpg" },
+  { id: "INS005", title: "Turtle Beach", artist: "DJ Cøsmic Dream", cover: "/releases/INS005.jpg" },
+  { id: "INS006", title: "Drifting", artist: "DJ Cøsmic Dream", cover: "/releases/INS006.jpg" },
+  { id: "INS007", title: "Luna EP", artist: "Glenn Morrison & Night Waves", cover: "/releases/INS007.jpg" },
 ];
 ---
 
@@ -26,14 +26,8 @@ const releases = [
   <body>
     <main class="site-shell">
       <header class="masthead" aria-label="Insignia">
-        <img class="hero-icon" src="/insignia-icon.png" alt="Insignia icon" />
-        <a class="brand" href="/" aria-label="Insignia home">
-          <svg class="brand-mark" viewBox="0 0 180 160" role="img" aria-label="Insignia mark">
-            <path class="brand-loop loop-a" d="M87 77C67 36 30 26 18 43 3 65 34 95 89 80" />
-            <path class="brand-loop loop-b" d="M98 75c42-4 65-31 55-52C142 1 105 5 91 77" />
-            <path class="brand-loop loop-c" d="M91 83c-15 47 0 77 23 72 28-6 31-49-18-76" />
-          </svg>
-          <span class="brand-word">insignia</span>
+        <a href="/" aria-label="Insignia home">
+          <img class="hero-icon" src="/insignia-icon.png" alt="Insignia icon" />
         </a>
         <p>Est. 2025</p>
       </header>
@@ -47,20 +41,9 @@ const releases = [
         <div class="release-grid">
           {
             releases.map((release) => (
-              <article
-                class:list={["release-card", `foil-${release.foil}`, { "is-featured": release.featured }]}
-                style={`--cover:${release.color};--ink:${release.ink};`}
-              >
+              <article class="release-card">
                 <a href="#subscribe" aria-label={`${release.artist} - ${release.title}`}>
-                  <span class="sleeve-shine" aria-hidden="true" />
-                  <span class="disc-peek" aria-hidden="true">
-                    <span />
-                  </span>
-                  <svg class="release-mark" viewBox="0 0 180 160" aria-hidden="true">
-                    <path class="release-loop loop-a" d="M87 77C67 36 30 26 18 43 3 65 34 95 89 80" />
-                    <path class="release-loop loop-b" d="M98 75c42-4 65-31 55-52C142 1 105 5 91 77" />
-                    <path class="release-loop loop-c" d="M91 83c-15 47 0 77 23 72 28-6 31-49-18-76" />
-                  </svg>
+                  <img class="release-cover" src={release.cover} alt={`${release.artist} - ${release.title}`} />
                   <span class="release-copy">
                     <span>{release.id}</span>
                     <strong>{release.title}</strong>
@@ -166,41 +149,11 @@ const releases = [
     margin-bottom: clamp(2rem, 5vw, 3.6rem);
   }
 
-  .brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(0.5rem, 1.4vw, 1rem);
-  }
-
-  .brand-mark {
-    width: clamp(5.7rem, 12vw, 8.2rem);
-    height: auto;
-    overflow: visible;
-  }
-
-  .brand-loop,
   .release-loop {
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  .brand-loop {
-    stroke: #fff;
-    stroke-width: 24;
-    filter: drop-shadow(0 0 0.35rem rgba(255, 255, 255, 0.45));
-  }
-
-  .brand-word {
-    font-family: var(--font-display);
-    font-size: clamp(2.1rem, 7vw, 5.1rem);
-    font-weight: 700;
-    line-height: 0.8;
-    text-transform: lowercase;
-    transform: scaleX(1.58);
-    transform-origin: left center;
   }
 
   .masthead p,
@@ -259,87 +212,27 @@ const releases = [
     position: relative;
     aspect-ratio: 1;
     min-width: 0;
-    background: var(--cover);
+    background: #111;
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    color: var(--ink);
     overflow: hidden;
   }
 
   .release-card a {
     position: absolute;
     inset: 0;
-    display: grid;
-    place-items: center;
-    isolation: isolate;
+    display: block;
   }
 
-  .release-card::before {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.23), transparent 26%, transparent 76%, rgba(255, 255, 255, 0.2)),
-      radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.25), transparent 28%),
-      radial-gradient(circle at 82% 80%, rgba(0, 0, 0, 0.17), transparent 35%);
-    mix-blend-mode: soft-light;
-    pointer-events: none;
-    content: "";
-  }
-
-  .sleeve-shine {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background:
-      linear-gradient(150deg, transparent 70%, rgba(255, 255, 255, 0.34) 72%, transparent 77%),
-      linear-gradient(165deg, transparent 64%, rgba(255, 255, 255, 0.2) 65%, transparent 66%),
-      linear-gradient(172deg, transparent 86%, rgba(255, 255, 255, 0.38) 88%, transparent 93%);
-    opacity: 0.72;
-    pointer-events: none;
-  }
-
-  .disc-peek {
-    position: absolute;
-    top: 43%;
-    right: -1rem;
-    z-index: 4;
-    width: 2rem;
-    aspect-ratio: 1;
-    border: 0.15rem solid #dcdcdc;
-    border-radius: 50%;
-    background: #060606;
-    box-shadow: 0 0 0 1px #090909;
-  }
-
-  .disc-peek span {
-    position: absolute;
-    inset: 0.58rem;
-    border-radius: 50%;
-    background: #d8d8d0;
-  }
-
-  .release-mark {
-    position: relative;
-    z-index: 2;
-    width: 62%;
-    height: auto;
-    color: var(--ink);
-    filter: drop-shadow(0.5rem 0.5rem 0 rgba(230, 200, 255, 0.7))
-      drop-shadow(-0.35rem -0.25rem 0 rgba(180, 230, 255, 0.65));
+  .release-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .release-loop {
     stroke-width: 21;
-  }
-
-  .foil-blue .release-mark {
-    filter: drop-shadow(0.35rem 0.35rem 0 rgba(0, 48, 220, 0.95));
-  }
-
-  .foil-silver .release-mark {
-    filter: drop-shadow(0.35rem 0.35rem 0 rgba(183, 184, 205, 0.95))
-      drop-shadow(-0.2rem -0.1rem 0 rgba(240, 247, 255, 0.85));
   }
 
   .release-copy {
@@ -349,13 +242,13 @@ const releases = [
     z-index: 5;
     display: grid;
     gap: 0.1rem;
-    color: #111;
+    color: #fff;
     line-height: 1;
     opacity: 0;
     transition: opacity 160ms ease;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
   }
 
-  .is-featured .release-copy,
   .release-card:hover .release-copy,
   .release-card:focus-within .release-copy {
     opacity: 1;
@@ -368,7 +261,7 @@ const releases = [
   }
 
   .release-copy span {
-    color: rgba(0, 0, 0, 0.42);
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .subscribe-panel {
@@ -489,17 +382,6 @@ const releases = [
     .site-shell {
       width: min(100% - 1.25rem, 38rem);
       padding-top: 2rem;
-    }
-
-    .brand {
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .brand-word {
-      font-size: clamp(2rem, 15vw, 4rem);
-      transform: scaleX(1.22);
-      transform-origin: center;
     }
 
     .release-grid {
