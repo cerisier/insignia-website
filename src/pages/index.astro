@@ -24,15 +24,20 @@ const releases = [
     <title>Insignia</title>
   </head>
   <body>
-    <main class="site-shell">
-      <header class="masthead" aria-label="Insignia">
-        <a href="/" aria-label="Insignia home">
-          <img class="hero-icon" src="/insignia-icon.png" alt="Insignia icon" />
-        </a>
-        <p>Est. 2025</p>
-      </header>
+    <header class="topbar" aria-label="Insignia">
+      <a class="topbar-logo" href="/" aria-label="Insignia home">
+        <img src="/insignia-icon.png" alt="Insignia" />
+      </a>
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#releases">Releases</a>
+        <a href="#artists">Artists</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-      <section class="release-section" aria-labelledby="releases-title">
+    <main class="site-shell">
+      <section class="release-section" aria-labelledby="releases-title" id="releases">
         <div class="section-rule">
           <h1 id="releases-title">Releases</h1>
           <span>007</span>
@@ -82,6 +87,7 @@ const releases = [
       </footer>
     </main>
   </body>
+
 </html>
 
 <style>
@@ -134,19 +140,41 @@ const releases = [
     padding: clamp(2rem, 5vw, 4rem) 0 2.75rem;
   }
 
-  .hero-icon {
-    display: block;
-    width: clamp(8rem, 30vw, 18rem);
-    height: auto;
-    filter: brightness(0);
-    margin-bottom: clamp(1rem, 3vw, 2rem);
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    height: 3.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
 
-  .masthead {
-    display: grid;
-    justify-items: center;
-    gap: 0.9rem;
-    margin-bottom: clamp(2rem, 5vw, 3.6rem);
+  .topbar-logo img {
+    display: block;
+    height: 1.6rem;
+    width: auto;
+    filter: brightness(0);
+  }
+
+  .topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 2.2rem);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .topbar-nav a {
+    color: var(--muted);
+    transition: color 120ms ease;
+  }
+
+  .topbar-nav a:hover {
+    color: var(--fg);
   }
 
   .release-loop {
@@ -156,7 +184,6 @@ const releases = [
     stroke-linejoin: round;
   }
 
-  .masthead p,
   .section-rule,
   .release-copy,
   .panel-label,
@@ -165,11 +192,6 @@ const releases = [
   button {
     font-size: 0.68rem;
     font-weight: 800;
-  }
-
-  .masthead p {
-    margin: 0;
-    color: var(--muted);
   }
 
   .section-rule {
