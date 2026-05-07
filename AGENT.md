@@ -11,6 +11,8 @@ The site should stay easy for non-coders to operate through an agent.
 - Keep tooling popular and boring.
 - Keep dependencies minimal.
 - Prefer Astro's default static output.
+- Make a pull request for changes by default.
+- Do not push directly to `main` unless the user explicitly asks.
 - Do not add custom build systems.
 - Do not commit generated folders: `dist/`, `.astro/`, `node_modules/`.
 - Keep edits simple and localized.
