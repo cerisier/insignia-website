@@ -86,13 +86,13 @@ const releases = [
 
 <style>
   :root {
-    color-scheme: dark;
-    --bg: #020202;
-    --fg: #f6f6f2;
-    --muted: #7f7f78;
-    --line: #232323;
-    --panel: #080808;
-    --edge: #3a3a36;
+    color-scheme: light;
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #888880;
+    --line: #e0e0da;
+    --panel: #f5f5f2;
+    --edge: #d0d0c8;
     --font-body:
       "Arial Narrow", "Helvetica Neue Condensed", "Roboto Condensed", "Avenir Next Condensed",
       system-ui, sans-serif;
@@ -114,7 +114,7 @@ const releases = [
     margin: 0;
     color: var(--fg);
     background:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 28rem),
+      radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.03), transparent 28rem),
       linear-gradient(var(--bg), var(--bg));
     font-family: var(--font-body);
     font-size: 16px;
@@ -138,7 +138,7 @@ const releases = [
     display: block;
     width: clamp(8rem, 30vw, 18rem);
     height: auto;
-    filter: brightness(0) invert(1);
+    filter: brightness(0);
     margin-bottom: clamp(1rem, 3vw, 2rem);
   }
 
@@ -338,17 +338,17 @@ const releases = [
     border: 1px solid var(--edge);
     padding: 0 0.85rem;
     color: var(--fg);
-    background: #050505;
+    background: #ffffff;
   }
 
   input::placeholder {
-    color: #77776f;
+    color: #aaa;
     opacity: 1;
   }
 
   button {
     border: 1px solid var(--fg);
-    color: #070707;
+    color: #ffffff;
     background: var(--fg);
     cursor: pointer;
   }
@@ -356,7 +356,7 @@ const releases = [
   button:hover,
   button:focus-visible {
     color: var(--fg);
-    background: #070707;
+    background: #ffffff;
   }
 
   .site-footer {
