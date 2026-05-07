@@ -1,0 +1,524 @@
+---
+const releases = [
+  { id: "ISG001", title: "Signal Bloom", artist: "Anjuna Static", color: "#47d414", foil: "mint", ink: "#eef0f5" },
+  { id: "ISG002", title: "Cosmic Dream", artist: "Dolphin Dreams", color: "#13d5d8", foil: "rose", ink: "#dce3ff", featured: true },
+  { id: "ISG003", title: "Lime Transmission", artist: "Oort Drift", color: "#f0f500", foil: "silver", ink: "#d8dce8" },
+  { id: "ISG004", title: "Night Loop", artist: "Pink Current", color: "#d71586", foil: "violet", ink: "#e5e8ff" },
+  { id: "ISG005", title: "Solar Motor", artist: "Axis Club", color: "#f59a05", foil: "pearl", ink: "#dbe4ff" },
+  { id: "ISG006", title: "Soft Circuit", artist: "Cyan Relay", color: "#10dfae", foil: "blush", ink: "#d8e4ff" },
+  { id: "ISG007", title: "White Index", artist: "Blue Method", color: "#f4f4f0", foil: "blue", ink: "#0421aa" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Insignia is an independent electronic label transmitting releases, mixes, and signals from the edge."
+    />
+    <title>Insignia</title>
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="masthead" aria-label="Insignia">
+        <a class="brand" href="/" aria-label="Insignia home">
+          <svg class="brand-mark" viewBox="0 0 180 160" role="img" aria-label="Insignia mark">
+            <path class="brand-loop loop-a" d="M87 77C67 36 30 26 18 43 3 65 34 95 89 80" />
+            <path class="brand-loop loop-b" d="M98 75c42-4 65-31 55-52C142 1 105 5 91 77" />
+            <path class="brand-loop loop-c" d="M91 83c-15 47 0 77 23 72 28-6 31-49-18-76" />
+          </svg>
+          <span class="brand-word">insignia</span>
+        </a>
+        <p>Est. 2025</p>
+      </header>
+
+      <section class="release-section" aria-labelledby="releases-title">
+        <div class="section-rule">
+          <h1 id="releases-title">Releases</h1>
+          <span>007</span>
+        </div>
+
+        <div class="release-grid">
+          {
+            releases.map((release) => (
+              <article
+                class:list={["release-card", `foil-${release.foil}`, { "is-featured": release.featured }]}
+                style={`--cover:${release.color};--ink:${release.ink};`}
+              >
+                <a href="#subscribe" aria-label={`${release.artist} - ${release.title}`}>
+                  <span class="sleeve-shine" aria-hidden="true" />
+                  <span class="disc-peek" aria-hidden="true">
+                    <span />
+                  </span>
+                  <svg class="release-mark" viewBox="0 0 180 160" aria-hidden="true">
+                    <path class="release-loop loop-a" d="M87 77C67 36 30 26 18 43 3 65 34 95 89 80" />
+                    <path class="release-loop loop-b" d="M98 75c42-4 65-31 55-52C142 1 105 5 91 77" />
+                    <path class="release-loop loop-c" d="M91 83c-15 47 0 77 23 72 28-6 31-49-18-76" />
+                  </svg>
+                  <span class="release-copy">
+                    <span>{release.id}</span>
+                    <strong>{release.title}</strong>
+                    <em>{release.artist}</em>
+                  </span>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="subscribe-panel" id="subscribe" aria-labelledby="subscribe-title">
+        <div class="panel-label">// Subscribe</div>
+        <div>
+          <h2 id="subscribe-title">Stay in<br />the signal.</h2>
+          <p>New releases, mixes, and transmissions direct to your inbox. No spam. Unsubscribe anytime.</p>
+        </div>
+        <form name="subscribe" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="subscribe" />
+          <label>
+            <span>Email address</span>
+            <input type="email" name="email" placeholder="Your e-mail address" required />
+          </label>
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+
+      <footer class="site-footer">
+        <p>© 2025 Insignia. All rights reserved.</p>
+        <nav aria-label="Social links">
+          <a href="https://bandcamp.com" rel="noreferrer">Bandcamp</a>
+          <a href="https://soundcloud.com" rel="noreferrer">Soundcloud</a>
+          <a href="https://instagram.com" rel="noreferrer">Instagram</a>
+        </nav>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #020202;
+    --fg: #f6f6f2;
+    --muted: #7f7f78;
+    --line: #232323;
+    --panel: #080808;
+    --edge: #3a3a36;
+    --font-body:
+      "Arial Narrow", "Helvetica Neue Condensed", "Roboto Condensed", "Avenir Next Condensed",
+      system-ui, sans-serif;
+    --font-display:
+      "Eurostile Extended", "Microgramma", "Arial Rounded MT Bold", "Helvetica Neue", system-ui,
+      sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--bg);
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    color: var(--fg);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 28rem),
+      linear-gradient(var(--bg), var(--bg));
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-shell {
+    width: min(100% - 2rem, 58rem);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) 0 2.75rem;
+  }
+
+  .masthead {
+    display: grid;
+    justify-items: center;
+    gap: 0.9rem;
+    margin-bottom: clamp(2rem, 5vw, 3.6rem);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.5rem, 1.4vw, 1rem);
+  }
+
+  .brand-mark {
+    width: clamp(5.7rem, 12vw, 8.2rem);
+    height: auto;
+    overflow: visible;
+  }
+
+  .brand-loop,
+  .release-loop {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .brand-loop {
+    stroke: #fff;
+    stroke-width: 24;
+    filter: drop-shadow(0 0 0.35rem rgba(255, 255, 255, 0.45));
+  }
+
+  .brand-word {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 7vw, 5.1rem);
+    font-weight: 700;
+    line-height: 0.8;
+    text-transform: lowercase;
+    transform: scaleX(1.58);
+    transform-origin: left center;
+  }
+
+  .masthead p,
+  .section-rule,
+  .release-copy,
+  .panel-label,
+  .site-footer,
+  input,
+  button {
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .masthead p {
+    margin: 0;
+    color: #d8d8d0;
+  }
+
+  .section-rule {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e8e8e0;
+  }
+
+  .section-rule::before,
+  .section-rule::after {
+    display: block;
+    height: 1px;
+    background: var(--line);
+    content: "";
+  }
+
+  .section-rule::before {
+    display: none;
+  }
+
+  .section-rule h1 {
+    margin: 0;
+    font: inherit;
+  }
+
+  .section-rule span {
+    color: var(--muted);
+  }
+
+  .release-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .release-card {
+    position: relative;
+    aspect-ratio: 1;
+    min-width: 0;
+    background: var(--cover);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .release-card a {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .release-card::before {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.23), transparent 26%, transparent 76%, rgba(255, 255, 255, 0.2)),
+      radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.25), transparent 28%),
+      radial-gradient(circle at 82% 80%, rgba(0, 0, 0, 0.17), transparent 35%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    content: "";
+  }
+
+  .sleeve-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background:
+      linear-gradient(150deg, transparent 70%, rgba(255, 255, 255, 0.34) 72%, transparent 77%),
+      linear-gradient(165deg, transparent 64%, rgba(255, 255, 255, 0.2) 65%, transparent 66%),
+      linear-gradient(172deg, transparent 86%, rgba(255, 255, 255, 0.38) 88%, transparent 93%);
+    opacity: 0.72;
+    pointer-events: none;
+  }
+
+  .disc-peek {
+    position: absolute;
+    top: 43%;
+    right: -1rem;
+    z-index: 4;
+    width: 2rem;
+    aspect-ratio: 1;
+    border: 0.15rem solid #dcdcdc;
+    border-radius: 50%;
+    background: #060606;
+    box-shadow: 0 0 0 1px #090909;
+  }
+
+  .disc-peek span {
+    position: absolute;
+    inset: 0.58rem;
+    border-radius: 50%;
+    background: #d8d8d0;
+  }
+
+  .release-mark {
+    position: relative;
+    z-index: 2;
+    width: 62%;
+    height: auto;
+    color: var(--ink);
+    filter: drop-shadow(0.5rem 0.5rem 0 rgba(230, 200, 255, 0.7))
+      drop-shadow(-0.35rem -0.25rem 0 rgba(180, 230, 255, 0.65));
+  }
+
+  .release-loop {
+    stroke-width: 21;
+  }
+
+  .foil-blue .release-mark {
+    filter: drop-shadow(0.35rem 0.35rem 0 rgba(0, 48, 220, 0.95));
+  }
+
+  .foil-silver .release-mark {
+    filter: drop-shadow(0.35rem 0.35rem 0 rgba(183, 184, 205, 0.95))
+      drop-shadow(-0.2rem -0.1rem 0 rgba(240, 247, 255, 0.85));
+  }
+
+  .release-copy {
+    position: absolute;
+    left: 1rem;
+    bottom: 0.85rem;
+    z-index: 5;
+    display: grid;
+    gap: 0.1rem;
+    color: #111;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 160ms ease;
+  }
+
+  .is-featured .release-copy,
+  .release-card:hover .release-copy,
+  .release-card:focus-within .release-copy {
+    opacity: 1;
+  }
+
+  .release-copy strong,
+  .release-copy em {
+    display: block;
+    font-style: normal;
+  }
+
+  .release-copy span {
+    color: rgba(0, 0, 0, 0.42);
+  }
+
+  .subscribe-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr minmax(16rem, 18rem);
+    gap: clamp(1.5rem, 8vw, 8rem);
+    margin-top: clamp(3rem, 7vw, 4.6rem);
+    padding: clamp(2rem, 4vw, 2.7rem) clamp(1.4rem, 4vw, 2.5rem);
+    border: 1px solid var(--edge);
+    background: var(--panel);
+  }
+
+  .panel-label {
+    position: absolute;
+    top: -0.55rem;
+    left: 1.6rem;
+    padding: 0 0.55rem;
+    color: var(--muted);
+    background: var(--bg);
+  }
+
+  .subscribe-panel h2 {
+    max-width: 14rem;
+    margin: 0 0 1rem;
+    font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+    line-height: 1.18;
+  }
+
+  .subscribe-panel p {
+    max-width: 24rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  form {
+    align-self: center;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  label span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  input,
+  button {
+    width: 100%;
+    min-height: 2.1rem;
+    border-radius: 0;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  input {
+    border: 1px solid var(--edge);
+    padding: 0 0.85rem;
+    color: var(--fg);
+    background: #050505;
+  }
+
+  input::placeholder {
+    color: #77776f;
+    opacity: 1;
+  }
+
+  button {
+    border: 1px solid var(--fg);
+    color: #070707;
+    background: var(--fg);
+    cursor: pointer;
+  }
+
+  button:hover,
+  button:focus-visible {
+    color: var(--fg);
+    background: #070707;
+  }
+
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: clamp(3rem, 8vw, 4.8rem);
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .site-footer nav {
+    display: flex;
+    gap: 1.4rem;
+  }
+
+  .site-footer a:hover,
+  .site-footer a:focus-visible {
+    color: var(--fg);
+  }
+
+  @media (max-width: 760px) {
+    .site-shell {
+      width: min(100% - 1.25rem, 38rem);
+      padding-top: 2rem;
+    }
+
+    .brand {
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-word {
+      font-size: clamp(2rem, 15vw, 4rem);
+      transform: scaleX(1.22);
+      transform-origin: center;
+    }
+
+    .release-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .subscribe-panel {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+
+    .site-footer {
+      display: grid;
+    }
+
+    .site-footer nav {
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .release-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .release-card {
+      max-height: calc(100vw - 1.25rem);
+    }
+  }
+</style>
