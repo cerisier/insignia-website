@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # unused starter asset
 public/favicon.ico
+
+# Local Netlify folder
+.netlify
